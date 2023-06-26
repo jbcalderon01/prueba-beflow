@@ -3,6 +3,7 @@ import { CreateProductDTO, GetAllProductDTO, UpdateProductDTO } from "../dto";
 
 export interface IProductRepository {
   getAllProducts(dto?: GetAllProductDTO): Promise<Product[]>;
+  getProductById(productId: string): Promise<Product>;
   createProduct(dto: CreateProductDTO): Promise<Product>;
   getProductByName(productName: string): Promise<Product | null>;
   updateProduct(dto: UpdateProductDTO): Promise<Product | null>;

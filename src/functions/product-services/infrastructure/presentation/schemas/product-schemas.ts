@@ -12,6 +12,18 @@ export const getAllProductsSchemaInput: SchemaCompiler = {
   },
 };
 
+export const getProductByIdSchemaInput: SchemaCompiler = {
+  schema: {
+    params: {
+      type: "object",
+      properties: {
+        productId: { type: "string" },
+      },
+      required: ["productId"],
+    },
+  },
+};
+
 export const createProductSchemaInput: SchemaCompiler = {
   schema: {
     body: {

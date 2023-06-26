@@ -1,14 +1,18 @@
-import { handlerPath } from "@libs/handler-resolver";
+import { awsLambdaFastify } from "@fastify/aws-lambda";
+import {
+  APIGatewayProxyEvent,
+  APIGatewayProxyResult,
+  Context,
+} from "aws-lambda";
+import app from "./app";
 
-export const productServices = {
-  handler: `${handlerPath(__dirname)}/handler.main`,
-  name: "product-services",
-  events: [
-    {
-      http: {
-        method: "any",
-        path: "/product/{proxy+}",
-      },
-    },
-  ],
+const proxy = awsLambdaFastify(app);
+
+const lambdaHandler = proxy;
+
+exports.handler = async (
+  event: APIGatewayProxyEvent,
+  context: Context
+): Promise<APIGatewayProxyResult> => {
+  return lambdaHandler(event, context);
 };

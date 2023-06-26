@@ -5,6 +5,7 @@ import {
   createProductSchemaInput,
   deleteProductSchemaInput,
   getAllProductsSchemaInput,
+  getProductByIdSchemaInput,
   updateProductSchemaInput,
 } from "../schemas";
 
@@ -18,12 +19,21 @@ export const productRoutes = (
     getAllProductsSchemaInput,
     productControllers.getAllProducts
   );
+
+  fastify.get(
+    "/:productId",
+    getProductByIdSchemaInput,
+    productControllers.getProductById
+  );
+
   fastify.post("/", createProductSchemaInput, productControllers.createProduct);
+
   fastify.put(
     "/:productId",
     updateProductSchemaInput,
     productControllers.updateProduct
   );
+
   fastify.delete(
     "/:productId",
     deleteProductSchemaInput,

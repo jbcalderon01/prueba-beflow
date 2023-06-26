@@ -1,6 +1,8 @@
 {
+  "esModuleInterop": true,
   "extends": "./tsconfig.paths.json",
   "compilerOptions": {
+    "esModuleInterop": true,
     "lib": ["ESNext"],
     "moduleResolution": "node",
     "noUnusedLocals": true,
@@ -19,6 +21,7 @@
     ".vscode/**/*"
   ],
   "ts-node": {
+    "esModuleInterop": true,
     "require": ["tsconfig-paths/register"]
   }
 }

@@ -48,4 +48,8 @@ export class ProductRepository implements IProductRepository {
   deleteProduct(productId: string): Promise<Product> {
     return this.productModel.findByIdAndDelete({ _id: productId });
   }
+
+  getProductById(productId: string): Promise<Product> {
+    return this.productModel.findById(productId);
+  }
 }

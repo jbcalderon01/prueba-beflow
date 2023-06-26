@@ -6,7 +6,7 @@ import {
   UpdateProductDTO,
 } from "../../../core";
 
-export function ProductControllers(productServices: IProductServices) {
+export function ProductServicesControllers(productServices: IProductServices) {
   function getAllProducts(
     req: FastifyRequest<{
       Querystring: GetAllProductDTO;
@@ -17,6 +17,16 @@ export function ProductControllers(productServices: IProductServices) {
       name: req.query.name,
     };
     return productServices.getAllProducts(getAllProductFilters);
+  }
+
+  function getProductById(
+    req: FastifyRequest<{
+      Params: {
+        productId: string;
+      };
+    }>
+  ) {
+    return productServices.getProductById(req.params.productId);
   }
 
   function createProduct(req: FastifyRequest<{ Body: CreateProductDTO }>) {
@@ -57,5 +67,6 @@ export function ProductControllers(productServices: IProductServices) {
     createProduct,
     updateProduct,
     deleteProduct,
+    getProductById,
   };
 }
