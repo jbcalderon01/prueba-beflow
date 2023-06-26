@@ -21,3 +21,7 @@ Depending on your preferred package manager, follow the instructions below to de
 - Run `yarn` to install the project dependencies
 - Run `yarn sls deploy` to deploy this stack to AWS
 - Run `yarn sls offline` to deploy this stack in your localhost
+
+## Run Unit Test
+
+- Run `yarn test` to run unit test with Jest
